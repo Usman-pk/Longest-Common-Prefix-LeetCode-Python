@@ -1,0 +1,26 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+
+        lengths = []
+        for i in strs:
+            lengths.append(len(i))
+
+        lowestStr = min(lengths)
+        LowestList = ""
+        for i in range(0, len(lengths)):
+            if lengths[i] == lowestStr:
+                LowestList = strs[i]
+        matchValue = []
+        count = 0
+        for i in range(0, len(strs)):
+            print(strs[i])
+            count = 0
+            for j in range(0, lowestStr):
+                if LowestList[j] == strs[i][j]:
+                    count = count + 1
+            matchValue.append(count)
+        return LowestList[:min(matchValue)]
